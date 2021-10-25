@@ -24,10 +24,7 @@ class PageHelper {
         dumpio: false,
       });
       this.page = await this.browser.newPage();
-      await Promise.all([
-        this.page.coverage.startJSCoverage(),
-        this.page.coverage.startCSSCoverage(),
-      ]);
+      await Promise.all([this.page.coverage.startJSCoverage()]);
     } catch (Exception) /* istanbul ignore next */ {
       throw new Error(Exception.toString());
     }
@@ -149,16 +146,14 @@ class PageHelper {
   public async close() {
     try {
       const pti = require('puppeteer-to-istanbul');
-      const [jsCoverage, cssCoverage] = await Promise.all([
+      const [jsCoverage] = await Promise.all([
         this.page.coverage.stopJSCoverage(),
-        this.page.coverage.stopCSSCoverage(),
       ]);
       pti.write(jsCoverage);
-      pti.write(cssCoverage);
-      return await this.browser.close();
     } catch (Exception) /* istanbul ignore next */ {
-      throw new Error(Exception.toString());
+      console.error(Exception.toString());
     }
+    return await this.browser.close();
   }
 }
 
