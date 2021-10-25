@@ -5,20 +5,20 @@ const htmlReports = path.join(process.cwd(), '/reports/html');
 const targetJson = jsonReports + '/cucumber_report.json';
 
 const cucumberReporterOptions = {
-    jsonFile: targetJson,
-    output: htmlReports + '/cucumber_reporter.html',
-    reportSuiteAsScenarios: true,
-    theme: 'bootstrap',
+  jsonFile: targetJson,
+  output: htmlReports + '/cucumber_reporter.html',
+  reportSuiteAsScenarios: true,
+  theme: 'bootstrap',
 };
 
 function createHTMLReport() {
-    try {
-        reporter.generate(cucumberReporterOptions); // invoke cucumber-html-reporter
-        console.log('HTML report generated successfully!');
-    } catch (err) {
-        if (err) {
-            throw new Error('Failed to save cucumber test results to json file.');
-        }
+  try {
+    reporter.generate(cucumberReporterOptions); // invoke cucumber-html-reporter
+    console.log('HTML report generated successfully!');
+  } catch (err) {
+    if (err) {
+      throw new Error('Failed to save cucumber test results to json file.');
     }
+  }
 }
 createHTMLReport();

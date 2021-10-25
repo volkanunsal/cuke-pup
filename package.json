@@ -11,10 +11,9 @@
     "report": "ts-node ./utils/reporter.ts",
     "test": "npm run cucumber ; npm run report",
     "test-windows": "npm run pretest && npm run cucumber-windows && npm run report",
-    "code-coverage-report":"nyc report --reporter=html",
+    "code-coverage-report": "nyc report --reporter=html",
     "test-coverage": "npm run test && npm run code-coverage-report"
   },
-  "author": "Ram Pasala <ram.pasala7@gmail.com>",
   "devDependencies": {
     "@types/cucumber": "^4.0.4",
     "@types/node": "^10.7.1",
@@ -31,18 +30,8 @@
     "tslint": "^5.11.0",
     "typescript": "^3.0.1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/igniteram/puppeteer-cucumber-typescript.git"
-  },
-  "keywords": [],
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/igniteram/puppeteer-cucumber-typescript/issues"
-  },
-  "homepage": "https://github.com/igniteram/puppeteer-cucumber-typescript#readme",
   "dependencies": {
-    "nyc": "^13.1.0"
+    "nyc": "^15.1.0"
   },
   "nyc": {
     "include": [
@@ -61,6 +50,7 @@
       "html"
     ],
     "sourceMap": true,
+    "cache": true,
     "instrument": true
   }
 }

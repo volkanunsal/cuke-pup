@@ -1,7 +1,7 @@
 import { searchPage } from '../pages/searchPage';
 import { page } from '../support/hooks';
-const { Then } = require('cucumber');
+import { Then } from 'cucumber';
 
 Then(/^I clear the search text$/, async () => {
-     await page.clearElement(searchPage.searchTextBox);
+  await page.clearElement(searchPage.searchTextBox);
 });

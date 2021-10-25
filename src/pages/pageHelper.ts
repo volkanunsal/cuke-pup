@@ -1,4 +1,4 @@
-import { Browser, ElementHandle, launch, Page, Response } from 'puppeteer';
+import { Browser, launch, Page, Response } from 'puppeteer';
 
 class PageHelper {
   private browser: Browser;
@@ -14,7 +14,12 @@ class PageHelper {
     try {
       this.browser = await launch({
         headless: true,
-        args: ['–no-sandbox', '–disable-setuid-sandbox', '--disable-notifications', '--start-maximized'],
+        args: [
+          '–no-sandbox',
+          '–disable-setuid-sandbox',
+          '--disable-notifications',
+          '--start-maximized',
+        ],
         ignoreHTTPSErrors: true,
         dumpio: false,
       });
@@ -27,10 +32,7 @@ class PageHelper {
       throw new Error(Exception.toString());
     }
   }
-  /**
-   * @param  {string} url
-   * @returns Promise
-   */
+
   public async open(url: string): Promise<Response> {
     let i: number = 0;
     while (i < this.retryCount) {
@@ -44,9 +46,7 @@ class PageHelper {
       }
     }
   }
-  /**
-   * @returns Promise
-   */
+
   public async getTitle(): Promise<string> {
     let i: number = 0;
     while (i < this.retryCount) {
@@ -61,10 +61,6 @@ class PageHelper {
     }
   }
 
-  /**
-   * @param  {string} element
-   * @returns Promise
-   */
   public async clickElement(element: string): Promise<void> {
     let i: number = 0;
     while (i < this.retryCount) {
@@ -86,11 +82,7 @@ class PageHelper {
       }
     }
   }
-  /**
-   * @param  {string} element
-   * @param  {string} text
-   * @returns Promise
-   */
+
   public async sendElementText(element: string, text: string): Promise<void> {
     let i: number = 0;
     while (i < this.retryCount) {
@@ -111,10 +103,7 @@ class PageHelper {
       }
     }
   }
-  /**
-   * @param  {string} element
-   * @returns Promise
-   */
+
   public async clearElement(element: string): Promise<void> {
     let i: number = 0;
     while (i < this.retryCount) {
@@ -137,10 +126,6 @@ class PageHelper {
       }
     }
   }
-  /**
-   * @param  {string} keys
-   * @returns Promise
-   */
   public async enterKeys(keys: string): Promise<void> {
     let i: number = 0;
     while (i < this.retryCount) {
@@ -154,12 +139,6 @@ class PageHelper {
       }
     }
   }
-  /**
-   * @param  {ElementHandle} element
-   * @param  {any} answers
-   * @returns Promise
-   */
-
   public async screenshot(): Promise<any> {
     try {
       return await this.page.screenshot();
