@@ -1,19 +1,14 @@
 import { Browser, launch, Page, Response } from 'puppeteer';
 
-class PageHelper {
+export class PageHelper {
   private browser: Browser;
   private page: Page;
   private readonly retryCount: number = 3;
 
-  constructor() {
-    this.browser = null;
-    this.page = null;
-  }
-
-  public async init() {
+  async init() {
     try {
       this.browser = await launch({
-        headless: false,
+        headless: true,
         args: [
           '–no-sandbox',
           '–disable-setuid-sandbox',
@@ -30,7 +25,7 @@ class PageHelper {
     }
   }
 
-  public async open(url: string): Promise<Response> {
+  async open(url: string): Promise<Response> {
     let i: number = 0;
     while (i < this.retryCount) {
       try {
@@ -44,7 +39,7 @@ class PageHelper {
     }
   }
 
-  public async getTitle(): Promise<string> {
+  async getTitle(): Promise<string> {
     let i: number = 0;
     while (i < this.retryCount) {
       try {
@@ -58,7 +53,7 @@ class PageHelper {
     }
   }
 
-  public async clickElement(element: string): Promise<void> {
+  async clickElement(element: string): Promise<void> {
     let i: number = 0;
     while (i < this.retryCount) {
       try {
@@ -80,7 +75,7 @@ class PageHelper {
     }
   }
 
-  public async sendElementText(element: string, text: string): Promise<void> {
+  async sendElementText(element: string, text: string): Promise<void> {
     let i: number = 0;
     while (i < this.retryCount) {
       try {
@@ -101,7 +96,7 @@ class PageHelper {
     }
   }
 
-  public async clearElement(element: string): Promise<void> {
+  async clearElement(element: string): Promise<void> {
     let i: number = 0;
     while (i < this.retryCount) {
       try {
@@ -127,7 +122,7 @@ class PageHelper {
       }
     }
   }
-  public async enterKeys(keys: string): Promise<void> {
+  async enterKeys(keys: string): Promise<void> {
     let i: number = 0;
     while (i < this.retryCount) {
       try {
@@ -140,14 +135,16 @@ class PageHelper {
       }
     }
   }
-  public async screenshot(): Promise<any> {
+
+  async screenshot(): Promise<any> {
     try {
       return await this.page.screenshot();
     } catch (Exception) /* istanbul ignore next */ {
       throw new Error(Exception.toString());
     }
   }
-  public async close() {
+
+  async close() {
     try {
       const pti = require('puppeteer-to-istanbul');
       const [jsCoverage] = await Promise.all([
@@ -159,10 +156,4 @@ class PageHelper {
     }
     await this.browser.close();
   }
-
-  public async closePage() {
-    await this.page.close();
-  }
 }
-
-export { PageHelper };
