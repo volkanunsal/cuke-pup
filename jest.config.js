@@ -5,7 +5,7 @@ module.exports = {
       isolatedModules: true,
     },
   },
-  roots: ['./src'],
+  roots: ['./src', './config/loaders'],
   moduleDirectories: ['src', 'node_modules'],
   preset: 'ts-jest',
   setupFilesAfterEnv: ['<rootDir>/setupTests.ts'],
