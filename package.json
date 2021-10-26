@@ -3,12 +3,11 @@
   "version": "0.0.1",
   "main": "index.js",
   "scripts": {
-    "lint": "tslint -c tslint.json 'src/**/*.ts'",
-    "pretest": "ts-node ./utils/json.ts",
     "tests:acceptance": "nyc cucumber-js --parallel 3 ./features/*.feature --require-module ts-node/register --require './src/*/*.ts' --format 'json:./reports/json/cucumber_report.json'",
     "tests:canaries": "echo 1",
     "report": "ts-node ./utils/reporter.ts",
-    "test": "echo 'TODO: run unit tests'",
+    "test": "npx jest",
+    "test.watch": "npx jest --watch",
     "code-coverage-report": "nyc report --reporter=html",
     "test-coverage": "npm run test && npm run code-coverage-report"
   },
@@ -16,6 +15,7 @@
     "@types/cucumber": "^4.0.4",
     "@types/node": "^10.7.1",
     "@types/puppeteer": "^1.6.1",
+    "@types/jest": "^27.0.1",
     "cucumber": "^5.0.3",
     "cucumber-html-reporter": "^4.0.3",
     "mkdirp": "^0.5.1",
@@ -23,7 +23,8 @@
     "puppeteer-to-istanbul": "^1.2.2",
     "rimraf": "^2.6.2",
     "ts-node": "^7.0.1",
-    "tslint": "^5.11.0",
+    "jest": "^27.0.1",
+    "ts-jest": "^27.0.1",
     "typescript": "^3.0.1",
     "expect": "^27.3.1",
     "nyc": "^15.1.0"

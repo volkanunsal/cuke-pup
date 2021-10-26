@@ -10,8 +10,9 @@
     "noImplicitAny": false,
     "skipLibCheck": true,
     "outDir": "built",
+    "allowJs": true,
     "typeRoots": ["./node_modules/@types"],
-    "types": ["node", "cucumber", "puppeteer"]
+    "types": ["node", "cucumber", "puppeteer", "jest"]
   },
   "exclude": ["node_modules", "typescript"]
 }

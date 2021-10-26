@@ -1,5 +1,9 @@
 import * as reporter from 'cucumber-html-reporter';
 import * as path from 'path';
+import { createJsonReportsFolder } from './createJsonReportsFolder';
+
+createJsonReportsFolder();
+
 const jsonReports = path.join(process.cwd(), '/reports/json');
 const htmlReports = path.join(process.cwd(), '/reports/html');
 const targetJson = jsonReports + '/cucumber_report.json';
