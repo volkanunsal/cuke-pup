@@ -13,7 +13,7 @@ class PageHelper {
   public async init() {
     try {
       this.browser = await launch({
-        headless: true,
+        headless: false,
         args: [
           '–no-sandbox',
           '–disable-setuid-sandbox',
