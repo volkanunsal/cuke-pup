@@ -4,7 +4,7 @@ import { getPage } from './getPage';
 /**
  * enterKeys simulates keyboard press to send the specified key to the page.
  *
- * @export
+ * @category PageAdapter
  */
 export async function enterKeys(keys: string): Promise<void> {
   const page = await getPage();

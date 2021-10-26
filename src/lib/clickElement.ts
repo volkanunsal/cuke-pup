@@ -4,6 +4,8 @@ import { getPage } from './getPage';
 /**
  * clickElement attempts to click an element. If element is not visible, it will wait for the element
  * to appear.
+ *
+ * @category PageAdapter
  */
 export async function clickElement(element: string): Promise<void> {
   const page = await getPage();

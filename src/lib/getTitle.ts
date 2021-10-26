@@ -4,7 +4,7 @@ import { getPage } from './getPage';
 /**
  * getTitle extracts the title of a page.
  *
- * @export
+ * @category PageAdapter
  */
 export async function getTitle(): Promise<string> {
   const page = await getPage();

@@ -3,7 +3,7 @@ import { getPage } from './getPage';
 /**
  * closePage closes the Puppeteer page.
  *
- * @export
+ * @category PageAdapter
  */
 export async function closePage() {
   const page = await getPage();

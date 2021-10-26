@@ -4,7 +4,7 @@ import { getPage } from './getPage';
 /**
  * sendElementText types a text to the element specified by a selector.
  *
- * @export
+ * @category PageAdapter
  */
 export async function sendElementText(
   selector: string,

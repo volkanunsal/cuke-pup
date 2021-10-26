@@ -6,7 +6,7 @@ const retryCount: number = 3;
 /**
  * openPage navigates the Puppeteer page to the specified url.
  *
- * @export
+ * @category PageAdapter
  */
 export async function openPage(url: string): Promise<Response> {
   const page = await getPage();

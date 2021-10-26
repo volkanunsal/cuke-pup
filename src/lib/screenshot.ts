@@ -3,7 +3,7 @@ import { getPage } from './getPage';
 /**
  * screenshot takes a screenshot of the page.
  *
- * @export
+ * @category PageAdapter
  */
 export async function screenshot(): Promise<any> {
   const page = await getPage();

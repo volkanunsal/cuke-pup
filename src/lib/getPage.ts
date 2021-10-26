@@ -1,16 +1,17 @@
-import { Browser, launch, Page } from 'puppeteer';
+import { launch, Page } from 'puppeteer';
 
-let browser: Browser;
 let page: Page;
 
 /**
  * getPage initializes or returns the Puppeteer page. It also starts page coverage metrics.
+ *
+ * @category PageAdapter
  */
 export async function getPage() {
   if (page) return page;
 
   try {
-    browser = await launch({
+    const browser = await launch({
       headless: true,
       args: [
         '–no-sandbox',

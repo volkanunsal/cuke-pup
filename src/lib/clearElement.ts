@@ -4,7 +4,7 @@ import { getPage } from './getPage';
 /**
  * clearElement clears the contents of the element specified by a selector.
  *
- * @export
+ * @category PageAdapter
  */
 export async function clearElement(selector: string): Promise<void> {
   const page = await getPage();
