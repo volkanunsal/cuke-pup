@@ -1,27 +1,24 @@
-import { BeforeAll, Before, After, AfterAll, Status } from 'cucumber';
-import { PageHelper } from '../pages/pageHelper';
-import { searchPage } from '../pages/searchPage';
-
-export const page = new PageHelper();
+import { After, AfterAll, Before, BeforeAll, Status } from 'cucumber';
+import { searchPage } from '../const/searchPage';
+import { close, init, open, screenshot } from '../lib/PageAdapter';
 
 BeforeAll({ timeout: 100 * 1000 }, async () => {
-  await page.init();
-  // await page.open(searchPage.url);
+  await init();
 });
 
 Before(async () => {
-  await page.open(searchPage.url);
+  await open(searchPage.url);
 });
 
 /* istanbul ignore next */
 After(async function (scenario) {
   if (scenario.result.status === Status.FAILED) {
     // screenShot is a base-64 encoded PNG
-    const screenShot = await page.screenshot();
+    const screenShot = await screenshot();
     this.attach(screenShot, 'image/png');
   }
 });
 
 AfterAll({ timeout: 100 * 1000 }, async () => {
-  await page.close();
+  await close();
 });
