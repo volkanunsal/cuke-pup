@@ -5,11 +5,12 @@ import { getPage } from './getPage';
  *
  * @category PageAdapter
  */
-export async function screenshot(): Promise<any> {
+export async function screenshot(_name: string = ''): Promise<any> {
   const page = await getPage();
   try {
+    // TODO: set the path? e.g. `./screenshot-${name}-${cnt++}.png`
     return await page.screenshot();
-  } catch (Exception) /* istanbul ignore next */ {
-    throw new Error(Exception.toString());
+  } catch (e) /* istanbul ignore next */ {
+    throw new Error(e.toString());
   }
 }

@@ -9,7 +9,7 @@
     "removeComments": false,
     "noImplicitAny": false,
     "skipLibCheck": true,
-    "outDir": "built",
+    "outDir": "build",
     "allowJs": true,
     "typeRoots": ["./node_modules/@types"],
     "types": ["node", "cucumber", "puppeteer", "jest"]

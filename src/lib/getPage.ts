@@ -1,4 +1,5 @@
 import { launch, Page } from 'puppeteer';
+import { getPuppeteerOptions } from './getPuppeteerOptions';
 
 let page: Page;
 
@@ -11,17 +12,7 @@ export async function getPage() {
   if (page) return page;
 
   try {
-    const browser = await launch({
-      headless: true,
-      args: [
-        '–no-sandbox',
-        '–disable-setuid-sandbox',
-        '--disable-notifications',
-        '--start-maximized',
-      ],
-      ignoreHTTPSErrors: true,
-      dumpio: false,
-    });
+    const browser = await launch(getPuppeteerOptions());
     page = await browser.newPage();
 
     // TODO: does this work canary runtime?
