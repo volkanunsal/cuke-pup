@@ -1,12 +1,7 @@
 import { Then } from 'cucumber';
-import { searchPage } from '../const';
-import { clearElement } from '../lib/clearElement';
-import { clickElement } from '../lib/clickElement';
+import { clearSearchText } from '../actions/clearSearchText';
+import { clickOnGoogleLogo } from '../actions/clickOnGoogleLogo';
 
-Then(/^I clear the search text$/, async () => {
-  await clearElement(searchPage.searchTextBox);
-});
+Then(/^I clear the search text$/, clearSearchText);
 
-Then(/^I click on google logo$/, async () => {
-  await clickElement(searchPage.logo);
-});
+Then(/^I click on google logo$/, clickOnGoogleLogo);

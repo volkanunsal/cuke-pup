@@ -1,7 +1,4 @@
 import { Given } from 'cucumber';
-import expect from 'expect';
-import { getTitle } from '../lib/getTitle';
+import { verifyTitle } from '../actions/verifyTitle';
 
-Given(/^I am on "(.*?)" search page$/, async (text) => {
-  await expect(getTitle()).resolves.toEqual(text);
-});
+Given(/^I am on "(.*?)" search page$/, verifyTitle);

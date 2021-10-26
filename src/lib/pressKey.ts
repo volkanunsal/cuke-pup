@@ -2,11 +2,11 @@ import { retryCount } from '../const';
 import { getPage } from './getPage';
 
 /**
- * enterKeys simulates keyboard press to send the specified key to the page.
+ * pressKey simulates keyboard press to send the specified key to the page.
  *
  * @category PageAdapter
  */
-export async function enterKeys(keys: string): Promise<void> {
+export async function pressKey(keys: string): Promise<void> {
   const page = await getPage();
   let i: number = 0;
   while (i < retryCount) {
