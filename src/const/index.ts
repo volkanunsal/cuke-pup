@@ -4,3 +4,5 @@ export const searchPage = {
   searchButton: 'input[value="Google Search"]',
   logo: '.logo a',
 };
+
+export const retryCount: number = 3;

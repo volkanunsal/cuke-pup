@@ -1,13 +1,16 @@
 import { After, AfterAll, Before, BeforeAll, Status } from 'cucumber';
-import { searchPage } from '../const/searchPage';
-import { close, init, open, screenshot } from '../lib/PageAdapter';
+import { searchPage } from '../const';
+import { closePage } from '../lib/closePage';
+import { getPage } from '../lib/getPage';
+import { openPage } from '../lib/openPage';
+import { screenshot } from '../lib/screenshot';
 
 BeforeAll({ timeout: 100 * 1000 }, async () => {
-  await init();
+  await getPage();
 });
 
 Before(async () => {
-  await open(searchPage.url);
+  await openPage(searchPage.url);
 });
 
 /* istanbul ignore next */
@@ -20,5 +23,5 @@ After(async function (scenario) {
 });
 
 AfterAll({ timeout: 100 * 1000 }, async () => {
-  await close();
+  await closePage();
 });

@@ -1,6 +1,7 @@
 import { When } from 'cucumber';
-import { searchPage } from '../const/searchPage';
-import { enterKeys, sendElementText } from '../lib/PageAdapter';
+import { searchPage } from '../const';
+import { enterKeys } from '../lib/enterKeys';
+import { sendElementText } from '../lib/sendElementText';
 
 When(/^I type "(.*?)"$/, async (text) => {
   await sendElementText(searchPage.searchTextBox, text);
