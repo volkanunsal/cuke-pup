@@ -5,6 +5,6 @@ import { pressKey } from '../lib/pressKey';
  *
  * @category Action
  */
-export async function pressEnter(text: string) {
+export async function pressEnter() {
   await pressKey('Enter');
 }
