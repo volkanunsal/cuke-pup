@@ -4,13 +4,11 @@ const isProduction = process.env.NODE_ENV == 'production';
 
 const config = {
   mode: 'development',
-  entry: './src/index.ts',
+  entry: '../src/index.ts',
   output: {
     path: path.resolve(__dirname, 'dist'),
   },
-  plugins: [
-    // Learn more about plugins from https://webpack.js.org/configuration/plugins/
-  ],
+  plugins: [],
   module: {
     rules: [
       {
@@ -21,6 +19,13 @@ const config = {
     ],
   },
   resolve: {
+    alias: {
+      Synthetics: path.resolve(__dirname, '../src/__mocks__/Synthetics'),
+      SyntheticsLogger: path.resolve(
+        __dirname,
+        '../src/__mocks__/SyntheticsLogger',
+      ),
+    },
     extensions: ['.tsx', '.ts', '.js'],
   },
 };
