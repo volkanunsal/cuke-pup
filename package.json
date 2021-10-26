@@ -3,13 +3,8 @@
   "version": "0.0.1",
   "main": "index.js",
   "scripts": {
-    "tests:acceptance": "nyc cucumber-js --parallel 3 ./features/*.feature --require-module ts-node/register --require './src/*/*.ts' --format 'json:./reports/json/cucumber_report.json'",
-    "tests:canaries": "echo 1",
-    "report": "ts-node ./utils/reporter.ts",
     "test": "npx jest",
-    "test.watch": "npx jest --watch",
-    "code-coverage-report": "nyc report --reporter=html",
-    "test-coverage": "npm run test && npm run code-coverage-report"
+    "test.watch": "npx jest --watch"
   },
   "dependencies": {
     "@types/cucumber": "^4.0.4",
@@ -23,13 +18,16 @@
     "js-logger": "^1.6.1",
     "mkdirp": "^0.5.1",
     "nyc": "^15.1.0",
+    "prettier": "^2.4.1",
     "puppeteer": "^1.7.0",
     "puppeteer-to-istanbul": "^1.2.2",
     "rimraf": "^2.6.2",
     "ts-jest": "^27.0.1",
+    "ts-loader": "^9.2.6",
     "ts-node": "^7.0.1",
-    "typescript": "^3.0.1",
-    "webpack": "^5.60.0"
+    "typescript": "^4.4.4",
+    "webpack": "^5.60.0",
+    "webpack-cli": "^4.9.1"
   },
   "nyc": {
     "include": [
