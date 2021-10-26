@@ -105,6 +105,10 @@ class PageHelper {
     let i: number = 0;
     while (i < this.retryCount) {
       try {
+        await this.page.evaluate(
+          () =>
+            ((document.querySelector(element) as HTMLInputElement).value = ''),
+        );
         const elementHandle = await this.page.$(element);
         await elementHandle.click({ clickCount: 3 });
         return await elementHandle.press('Backspace');
@@ -153,7 +157,11 @@ class PageHelper {
     } catch (Exception) /* istanbul ignore next */ {
       console.error(Exception.toString());
     }
-    return await this.browser.close();
+    await this.browser.close();
+  }
+
+  public async closePage() {
+    await this.page.close();
   }
 }
 

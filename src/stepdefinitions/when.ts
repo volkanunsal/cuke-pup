@@ -9,7 +9,3 @@ When(/^I type "(.*?)"$/, async (text) => {
 When(/^I click on search button$/, async () => {
   await page.enterKeys('Enter');
 });
-
-Then(/^I click on google logo$/, async () => {
-  await page.clickElement(searchPage.logo);
-});

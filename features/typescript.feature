@@ -2,7 +2,7 @@ Feature: To search typescript in google
 
   @TypeScriptScenario
   Scenario: Typescript Google Search
-    Given I am on "google" search page
+    Given I am on "Google" search page
     When I type "typescript"
     When I click on search button
     Then I clear the search text

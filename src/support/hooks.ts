@@ -2,7 +2,7 @@ import { BeforeAll, After, AfterAll, Status } from 'cucumber';
 import { PageHelper } from '../pages/pageHelper';
 import { searchPage } from '../pages/searchPage';
 
-export const page: PageHelper = new PageHelper();
+export const page = new PageHelper();
 
 BeforeAll({ timeout: 100 * 1000 }, async () => {
   await page.init();
@@ -16,6 +16,7 @@ After(async function (scenario) {
     const screenShot = await page.screenshot();
     this.attach(screenShot, 'image/png');
   }
+  await page.closePage();
 });
 
 AfterAll({ timeout: 100 * 1000 }, async () => {
