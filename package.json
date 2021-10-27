@@ -7,6 +7,7 @@
     "test.watch": "npx jest --watch"
   },
   "dependencies": {
+    "@aws-cdk/core": "^1.129.0",
     "@types/cucumber": "^4.0.4",
     "@types/jest": "^27.0.1",
     "@types/loader-utils": "^2.0.3",
