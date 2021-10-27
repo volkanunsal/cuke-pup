@@ -1,4 +1,4 @@
-import { launch, Page } from 'puppeteer';
+import pup, { Page } from 'puppeteer';
 import { getPuppeteerOptions } from './getPuppeteerOptions';
 
 let page: Page;
@@ -12,12 +12,12 @@ export async function getPage() {
   if (page) return page;
 
   try {
-    const browser = await launch(getPuppeteerOptions());
+    const browser = await pup.launch(getPuppeteerOptions());
     page = await browser.newPage();
-
-    // TODO: does this work canary runtime?
     await page.coverage.startJSCoverage();
   } catch (e) /* istanbul ignore next */ {
     throw new Error(e.toString());
   }
+
+  return page;
 }

@@ -1,8 +1,10 @@
 all:
 	@echo "Task not defined"
 
+export PATH := ./node_modules/.bin:$(PATH)
+
 acceptance:
-	@nyc cucumber-js --parallel 3 ./features/*.feature --require-module ts-node/register --require './src/*/*.ts' --format 'json:./reports/json/cucumber_report.json'
+	@nyc cucumber-js --parallel 3 --retry 3 ./features/*.feature --require-module ts-node/register --require './src/*/*[^spec].ts' --format 'json:./reports/json/cucumber_report.json'
 
 canaries:
 	@echo WIP
@@ -12,7 +14,7 @@ report:
 
 test-coverage:
 	@npm run test
-	nyc report --reporter=html
+	@nyc report --reporter=html
 
 
 .PHONY: canaries

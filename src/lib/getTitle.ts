@@ -8,14 +8,15 @@ import { getPage } from './getPage';
  */
 export async function getTitle(): Promise<string> {
   const page = await getPage();
+
   let i: number = 0;
   while (i < retryCount) {
     try {
       return await page.title();
-    } catch (Exception) /* istanbul ignore next */ {
+    } catch (e) /* istanbul ignore next */ {
       i++;
       if (i === retryCount) {
-        throw new Error(Exception.toString());
+        throw new Error(e.toString());
       }
     }
   }

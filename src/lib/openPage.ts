@@ -13,11 +13,12 @@ export async function openPage(url: string): Promise<Response> {
   let i: number = 0;
   while (i < retryCount) {
     try {
-      return await page.goto(url);
-    } catch (Exception) /* istanbul ignore next */ {
+      const res = await page.goto(url);
+      return res;
+    } catch (e) /* istanbul ignore next */ {
       i++;
       if (i === retryCount) {
-        throw new Error(Exception.toString());
+        throw new Error(e.toString());
       }
     }
   }
