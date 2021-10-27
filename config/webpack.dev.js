@@ -4,11 +4,14 @@ const isProduction = process.env.NODE_ENV == 'production';
 
 const config = {
   target: 'node',
-  mode: 'development',
-  entry: '../src/index.ts',
+  mode: 'production',
+  entry: ['../canaries/canary1.ts'],
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, '../dist'),
+    filename: '[name].js',
+    libraryTarget: 'commonjs',
   },
+  optimization: false,
   plugins: [],
   module: {
     rules: [
