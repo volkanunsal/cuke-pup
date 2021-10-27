@@ -4,7 +4,7 @@ all:
 export PATH := ./node_modules/.bin:$(PATH)
 
 acceptance:
-	@nyc cucumber-js --parallel 3 --retry 3 ./features/*.feature --require-module ts-node/register --require './src/*/*[^spec].ts' --format 'json:./reports/json/cucumber_report.json'
+	@nyc cucumber-js --parallel 3 --retry 3 ./features/*.feature --require-module ts-node/register --require './src/actions/*.ts' --require './src/support/*.ts' --require './src/stepdefinitions/*.ts' --format 'json:./reports/json/cucumber_report.json'
 
 canaries:
 	@echo WIP
