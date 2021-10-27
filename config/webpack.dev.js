@@ -3,6 +3,7 @@ const path = require('path');
 const isProduction = process.env.NODE_ENV == 'production';
 
 const config = {
+  target: 'node',
   mode: 'development',
   entry: '../src/index.ts',
   output: {
