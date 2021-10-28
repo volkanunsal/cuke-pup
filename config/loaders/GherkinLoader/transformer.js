@@ -1,14 +1,6 @@
-import {
-  Annotation,
-  Feature,
-  parse,
-  Rule,
-  RuleDeclaration,
-  Scenario,
-} from 'stucumber/dist/parser';
-
+import { parse } from 'stucumber/dist/parser';
 export default class Transformer {
-  transformFeature(f: Feature, rd: RuleDeclaration[], s: Scenario[]): string {
+  transformFeature(f, rd, s) {
     const tRd = rd.map((r) => this.transformRuleDeclaration(r).trim()).join('');
     const ts = s.map((s) => this.transformScenario(s));
     const name = this.getFeatureName(f);
@@ -25,8 +17,7 @@ export default class Transformer {
   await _cucumber.exitFeature(feature);
     }`;
   }
-
-  transformRuleDeclaration(r: RuleDeclaration): string {
+  transformRuleDeclaration(r) {
     const name = JSON.stringify(r.template.value);
     const rulesStr = r.rules
       .map((rule) => this.transformRule(rule, true))
@@ -34,16 +25,13 @@ export default class Transformer {
     return `_cucumber.defineRule(${name}, (world, params) => Promise.resolve()
           ${rulesStr})`;
   }
-
-  getScenarioName(s: Scenario) {
+  getScenarioName(s) {
     return s.name.value;
   }
-
-  private getContext(name: string, annotations: Annotation[], rules?: Rule[]) {
-    const context: any = { name, annotations, meta: {} };
+  getContext(name, annotations, rules) {
+    const context = { name, annotations, meta: {} };
     let json = JSON.stringify(context);
     const str = json.slice(0, -1);
-
     if (rules) {
       const steps = rules.map((rule) => ({
         name: rule.value,
@@ -54,11 +42,9 @@ export default class Transformer {
     } else {
       json = `${str}, "filename": "NOT_SUPPORTED"}`;
     }
-
     return json;
   }
-
-  transformScenario(scenario: Scenario): string {
+  transformScenario(scenario) {
     const sName = this.getScenarioName(scenario);
     const { annotations, rules: scenarioRules } = scenario;
     const rules = scenarioRules.map((r) => this.transformRule(r));
@@ -76,21 +62,23 @@ export default class Transformer {
       });
   }`;
   }
-
-  transformRule(rule: Rule, isTemplate?: boolean): string {
+  transformRule(rule, isTemplate) {
+    var _a;
     const name = JSON.stringify(rule.value);
-    const data = rule.data?.length ? JSON.stringify(rule.data) : 'null';
+    const data = (
+      (_a = rule.data) === null || _a === void 0 ? void 0 : _a.length
+    )
+      ? JSON.stringify(rule.data)
+      : 'null';
     const template = isTemplate ? ', params' : '""';
     return `.then(() => { 
           _cucumber.rule(world, ${name}, ${data}, ${template}) 
         })`;
   }
-
-  getFeatureName(feature: Feature) {
+  getFeatureName(feature) {
     return 'Feature: ' + feature.name.value;
   }
-
-  transformFile(code: string): string {
+  transformFile(code) {
     return `
 import { cucumber } from "stucumber";
 import promiseFinally from 'promise.prototype.finally';
@@ -101,13 +89,14 @@ export default async function Features(obj) {
 }
     `;
   }
-
-  transform(source: string) {
+  transform(source) {
     const feature = parse(source);
     const background = feature.background || [];
     const ds = feature.ruleDeclarations || [];
     const scenarios = feature.scenarios.map((scenario) => {
-      return { ...scenario, rules: [...background, ...scenario.rules] };
+      return Object.assign(Object.assign({}, scenario), {
+        rules: [...background, ...scenario.rules],
+      });
     });
     return this.transformFile(this.transformFeature(feature, ds, scenarios));
   }
