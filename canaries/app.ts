@@ -5,10 +5,10 @@
 //   SoftwareType,
 //   VersionSetPlatform,
 // } from '@amzn/pipelines';
-// import * as cdk from '@aws-cdk/core';
+import * as cdk from '@aws-cdk/core';
 
-// // Set up your CDK App
-// const app = new cdk.App();
+// Set up your CDK App
+const app = new cdk.App();
 
 // // TODO:
 // const ACCOUNT_ID = 'ACCOUNT_ID';
