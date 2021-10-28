@@ -1,6 +1,6 @@
-import Transformer from './transformer';
+const Transformer = require('./transformer');
 
-export default function loader(source) {
+module.exports = function loader(source) {
   const transformer = new Transformer();
   return JSON.stringify(transformer.transform(source));
-}
+};

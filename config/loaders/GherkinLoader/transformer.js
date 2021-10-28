@@ -1,5 +1,5 @@
-import { parse } from 'stucumber/dist/parser';
-export default class Transformer {
+const { parse } = require('stucumber/dist/parser');
+module.exports = class Transformer {
   transformFeature(f, rd, s) {
     const tRd = rd.map((r) => this.transformRuleDeclaration(r).trim()).join('');
     const ts = s.map((s) => this.transformScenario(s));
@@ -100,4 +100,4 @@ export default async function Features(obj) {
     });
     return this.transformFile(this.transformFeature(feature, ds, scenarios));
   }
-}
+};

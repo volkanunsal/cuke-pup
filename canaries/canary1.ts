@@ -1,6 +1,5 @@
-// TODO: import the required features
-// import feature1
+import pup from '../features/puppeteer.feature';
 
-export default () => {
-  console.log('hello world');
+export default async () => {
+  await pup();
 };
