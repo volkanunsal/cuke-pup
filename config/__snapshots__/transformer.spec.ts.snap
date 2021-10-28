@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`transformer should transform the feature 1`] = `
+"
+import { cucumber } from \\"stucumber\\";
+import promiseFinally from 'promise.prototype.finally';
+const _cucumber = cucumber.clone();
+
+export default async function Features(obj) {
+  
+  // Feature: integration test
+  const feature = {\\"name\\":\\"integration test\\",\\"annotations\\":[],\\"meta\\":{}, \\"filename\\": 'NOT_SUPPORTED'};
+  await Promise.all([
+    _cucumber.defineRule(\\"I add the numbers {a:int} and {b:int}\\", (world, params) => Promise.resolve()
+          .then(() => { 
+          _cucumber.rule(world, \\"I take the number <a>\\", null, , params) 
+        }).then(() => { 
+          _cucumber.rule(world, \\"I take the number <b>\\", null, , params) 
+        }).then(() => { 
+          _cucumber.rule(world, \\"I add them\\", null, , params) 
+        }))
+  ]);
+  await _cucumber.enterFeature(feature);
+  await Promise.all([
+    () => {
+      // adding
+      const world = _cucumber.createWorld();
+      const scenario = {\\"name\\":\\"adding\\",\\"annotations\\":[],\\"meta\\":{}, \\"feature\\": feature, \\"steps\\": [{\\"name\\":\\"I take the number 5\\",\\"line\\":8,\\"keyword\\":\\"Given\\"},{\\"name\\":\\"I take the number 3\\",\\"line\\":9,\\"keyword\\":\\"And\\"},{\\"name\\":\\"I add them\\",\\"line\\":10,\\"keyword\\":\\"When\\"},{\\"name\\":\\"I will have 8\\",\\"line\\":11,\\"keyword\\":\\"Then\\"}]};
+
+      const chain = _cucumber.enterScenario(world, scenario)
+        .then(() => { 
+          _cucumber.rule(world, \\"I take the number 5\\", null, \\"\\") 
+        })
+				.then(() => { 
+          _cucumber.rule(world, \\"I take the number 3\\", null, \\"\\") 
+        })
+				.then(() => { 
+          _cucumber.rule(world, \\"I add them\\", null, \\"\\") 
+        })
+				.then(() => { 
+          _cucumber.rule(world, \\"I will have 8\\", null, \\"\\") 
+        });
+      
+      return promiseFinally(chain, () => {
+        _cucumber.exitScenario(world, scenario)
+      });
+  },() => {
+      // lots of data
+      const world = _cucumber.createWorld();
+      const scenario = {\\"name\\":\\"lots of data\\",\\"annotations\\":[],\\"meta\\":{}, \\"feature\\": feature, \\"steps\\": [{\\"name\\":\\"lots of data\\",\\"line\\":14,\\"keyword\\":\\"Given\\"},{\\"name\\":\\"I use 3 key-value pairs\\",\\"line\\":18,\\"keyword\\":\\"When\\"},{\\"name\\":\\"I have a list\\",\\"line\\":22,\\"keyword\\":\\"And\\"}]};
+
+      const chain = _cucumber.enterScenario(world, scenario)
+        .then(() => { 
+          _cucumber.rule(world, \\"lots of data\\", [[\\"Header 1\\",\\"Header 2\\",\\"Header 3\\"],[\\"Value 1a\\",\\"Value 1b\\",\\"Value 1c\\"],[\\"Value 2a\\",\\"Value 2b\\",\\"Value 2c\\"]], \\"\\") 
+        })
+				.then(() => { 
+          _cucumber.rule(world, \\"I use 3 key-value pairs\\", [[\\"Key 1\\",\\"Value 1\\"],[\\"Key 2\\",\\"Value 2\\"],[\\"Key 3\\",\\"Value 3\\"]], \\"\\") 
+        })
+				.then(() => { 
+          _cucumber.rule(world, \\"I have a list\\", [[\\"Value 1\\"],[\\"Value 2\\"],[\\" Value 3 \\"]], \\"\\") 
+        });
+      
+      return promiseFinally(chain, () => {
+        _cucumber.exitScenario(world, scenario)
+      });
+  },() => {
+      // inline rules
+      const world = _cucumber.createWorld();
+      const scenario = {\\"name\\":\\"inline rules\\",\\"annotations\\":[],\\"meta\\":{}, \\"feature\\": feature, \\"steps\\": [{\\"name\\":\\"I add the numbers 2 and 7\\",\\"line\\":28,\\"keyword\\":\\"Given\\"},{\\"name\\":\\"I will have 9\\",\\"line\\":29,\\"keyword\\":\\"Then\\"}]};
+
+      const chain = _cucumber.enterScenario(world, scenario)
+        .then(() => { 
+          _cucumber.rule(world, \\"I add the numbers 2 and 7\\", null, \\"\\") 
+        })
+				.then(() => { 
+          _cucumber.rule(world, \\"I will have 9\\", null, \\"\\") 
+        });
+      
+      return promiseFinally(chain, () => {
+        _cucumber.exitScenario(world, scenario)
+      });
+  }.map(v => v())
+  ]);
+  await _cucumber.exitFeature(feature);
+    }
+}
+    "
+`;

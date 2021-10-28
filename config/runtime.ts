@@ -1,20 +1,38 @@
+import { cucumber, HookType } from 'stucumber';
+
+function step(pattern: RegExp | string, code: StepDefinitionCode) {
+  cucumber.defineRule(pattern, (world, ...args) => {
+    code.apply(world, args);
+  });
+}
+
 export const Given = (pattern: RegExp | string, code: StepDefinitionCode) => {
-  // TODO: this should be world.
-  code.apply(this, console.log('foo: ', pattern));
+  step(pattern, code);
 };
 
 export const Then = function (
   pattern: RegExp | string,
   code: StepDefinitionCode,
 ) {
-  // TODO: this should be world.
-  code.apply(this, console.log('foo: ', pattern));
+  step(pattern, code);
 };
 
-export const After: GlobalHookCode = (code) => code(console.log('foo'));
-export const AfterAll: GlobalHookCode = (code) => code(console.log('foo'));
-export const Before: GlobalHookCode = (code) => code(console.log('foo'));
-export const BeforeAll: GlobalHookCode = (code) => code(console.log('foo'));
+export const After: GlobalHookCode = (code) => {
+  cucumber.addHook(HookType.AfterScenarios, (w, annotations) => {
+    code.apply(w, annotations);
+  });
+};
+export const BeforeAll: GlobalHookCode = (code) => {
+  cucumber.addHook(HookType.BeforeFeatures, code);
+};
+export const AfterAll: GlobalHookCode = (code) => {
+  cucumber.addHook(HookType.AfterFeatures, code);
+};
+export const Before: GlobalHookCode = (code) => {
+  cucumber.addHook(HookType.BeforeScenarios, (w, annotations) => {
+    code.apply(w, annotations);
+  });
+};
 
 // ---------------------------------------------------------------------------
 // NOTE: Importing the types files from cucumber causes a lof of junk to be imported as well.

@@ -12,6 +12,9 @@ canaries:
 report:
 	@$$BIN/ts-node ./utils/reporter.ts
 
+test:
+	@npm run test
+
 test-coverage:
 	@npm run test
 	@$$BIN/nyc report --reporter=html
