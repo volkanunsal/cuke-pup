@@ -1,4 +1,4 @@
-import { When } from 'cucumber';
+import { When } from '@cucumber';
 import { pressEnter } from '../actions/pressEnter';
 import { typeTextIntoSearchBox } from '../actions/typeTextIntoSearchBox';
 

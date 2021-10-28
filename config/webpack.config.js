@@ -19,10 +19,10 @@ const config = {
   },
   plugins: [
     new webpack.NormalModuleReplacementPlugin(
-      /cucumber/,
-      'cucumber',
+      /@cucumber/,
+      // 'runtime',
       // TODO: replace with custom runtime
-      // path.resolve(__dirname, './foo.js'),
+      path.resolve(__dirname, './runtime.ts'),
     ),
   ],
   module: {

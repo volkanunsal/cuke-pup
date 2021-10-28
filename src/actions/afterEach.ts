@@ -1,4 +1,4 @@
-import { HookScenarioResult, Status, World } from 'cucumber';
+import { HookScenarioResult, Status, World } from '@cucumber';
 import { screenshot } from '../lib/screenshot';
 
 /**

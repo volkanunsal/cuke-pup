@@ -1,4 +1,4 @@
-import { After, AfterAll, Before, BeforeAll } from 'cucumber';
+import { After, AfterAll, Before, BeforeAll } from '@cucumber';
 import { afterEach } from '../actions/afterEach';
 import { beforeEach } from '../actions/beforeEach';
 import { closePage } from '../lib/closePage';

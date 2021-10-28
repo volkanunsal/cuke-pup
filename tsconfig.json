@@ -12,6 +12,10 @@
     "outDir": "build",
     "allowJs": true,
     "typeRoots": ["./node_modules/@types"],
+    "baseUrl": ".",
+    "paths": {
+      "@cucumber": ["./node_modules/cucumber"]
+    },
     "types": ["node", "cucumber", "puppeteer", "jest"]
   },
   "exclude": ["node_modules", "typescript"]
