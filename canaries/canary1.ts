@@ -1,5 +1,5 @@
 // import { exec } from "child_process";
-import { Given } from '@cucumber';
+import { Given } from 'cucumber';
 function runFeatures(arr: string[]) {
   Given('foo', () => {});
   // TODO use Cucumber commandline API to load and run feature files from the named directory.

@@ -1,4 +1,4 @@
-import { Then } from '@cucumber';
+import { Then } from 'cucumber';
 import { clearSearchText } from '../actions/clearSearchText';
 import { clickOnGoogleLogo } from '../actions/clickOnGoogleLogo';
 

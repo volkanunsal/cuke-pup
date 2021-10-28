@@ -13,9 +13,7 @@
     "allowJs": true,
     "typeRoots": ["./node_modules/@types"],
     "baseUrl": ".",
-    "paths": {
-      "@cucumber": ["./node_modules/cucumber"]
-    },
+    "paths": {},
     "types": ["node", "cucumber", "puppeteer", "jest"]
   },
   "exclude": ["node_modules", "typescript"]
