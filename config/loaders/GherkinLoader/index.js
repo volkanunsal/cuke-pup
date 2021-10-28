@@ -1,7 +1,6 @@
+import Transformer from './transformer';
+
 export default function loader(source) {
-  const options = this.getOptions();
-
-  source = source.replace(/\[name\]/g, options.name);
-
-  return `export default ${JSON.stringify(source)}`;
+  const transformer = new Transformer();
+  return JSON.stringify(transformer.transform(source));
 }

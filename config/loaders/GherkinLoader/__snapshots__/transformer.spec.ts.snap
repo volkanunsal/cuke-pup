@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`transformer should transform the feature 1`] = `
+exports[`Transformer should transform the feature 1`] = `
 "
 import { cucumber } from \\"stucumber\\";
 import promiseFinally from 'promise.prototype.finally';
@@ -9,7 +9,7 @@ const _cucumber = cucumber.clone();
 export default async function Features(obj) {
   
   // Feature: integration test
-  const feature = {\\"name\\":\\"integration test\\",\\"annotations\\":[],\\"meta\\":{}, \\"filename\\": 'NOT_SUPPORTED'};
+  const feature = {\\"name\\":\\"integration test\\",\\"annotations\\":[],\\"meta\\":{}, \\"filename\\": \\"NOT_SUPPORTED\\"};
   await Promise.all([
     _cucumber.defineRule(\\"I add the numbers {a:int} and {b:int}\\", (world, params) => Promise.resolve()
           .then(() => { 

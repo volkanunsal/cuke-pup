@@ -14,7 +14,7 @@ export default (fixture, options = {}) => {
     module: {
       rules: [
         {
-          test: /\.txt$/,
+          test: /\.feature$/,
           use: {
             loader: path.resolve(__dirname, './index.js'),
             options,

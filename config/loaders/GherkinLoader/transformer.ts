@@ -52,7 +52,7 @@ export default class Transformer<T> {
       }));
       json = `${str}, "feature": feature, "steps": ${JSON.stringify(steps)}}`;
     } else {
-      json = `${str}, "filename": 'NOT_SUPPORTED'}`;
+      json = `${str}, "filename": "NOT_SUPPORTED"}`;
     }
 
     return json;

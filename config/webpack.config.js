@@ -30,6 +30,11 @@ const config = {
         loader: 'ts-loader',
         exclude: ['/node_modules/'],
       },
+      {
+        test: /\.feature$/i,
+        loader: path.resolve(__dirname, './loaders/GherkinLoader'),
+        exclude: ['/node_modules/'],
+      },
     ],
   },
   resolve: {
