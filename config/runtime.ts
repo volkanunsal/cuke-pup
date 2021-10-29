@@ -1,7 +1,7 @@
-import { cucumber, HookType } from 'stucumber';
+import { cucumber, HookType } from 'stucumber/dist/cucumber';
 
 function step(pattern: RegExp | string, code: StepDefinitionCode) {
-  cucumber.defineRule(pattern, (world, ...args) => {
+  cucumber.defineRule(pattern as string, (world, ...args) => {
     code.apply(world, args);
   });
 }

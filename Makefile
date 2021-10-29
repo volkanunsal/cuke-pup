@@ -10,7 +10,7 @@ canaries:
 	@$$BIN/webpack -c ./config/webpack.config.js
 
 report:
-	@$$BIN/ts-node ./utils/reporter.ts
+	@$$BIN/ts-node ./src/utils/reporter.ts
 
 test:
 	@npm run test

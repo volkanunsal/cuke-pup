@@ -11,7 +11,7 @@ module.exports = {
   setupFilesAfterEnv: ['<rootDir>/setupTests.ts'],
   moduleNameMapper: {},
   transform: {
-    '^.+\\.(ts|js)x?$': 'ts-jest',
+    '^.+\\.(ts|js|feature)x?$': 'ts-jest',
   },
   transformIgnorePatterns: [],
 };

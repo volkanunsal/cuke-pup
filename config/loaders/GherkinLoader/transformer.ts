@@ -8,6 +8,18 @@ import {
 } from 'stucumber/dist/parser';
 
 export default class Transformer {
+  transformFile(code: string): string {
+    return `
+import { cucumber } from "stucumber/dist/cucumber";
+import promiseFinally from 'promise.prototype.finally';
+const _cucumber = cucumber.clone();
+
+export default async function Features(obj) {
+  ${code}
+}
+    `;
+  }
+
   transformFeature(f: Feature, rd: RuleDeclaration[], s: Scenario[]): string {
     const tRd = rd.map((r) => this.transformRuleDeclaration(r).trim()).join('');
     const ts = s.map((s) => this.transformScenario(s));
@@ -88,18 +100,6 @@ export default class Transformer {
 
   getFeatureName(feature: Feature) {
     return 'Feature: ' + feature.name.value;
-  }
-
-  transformFile(code: string): string {
-    return `
-import { cucumber } from "stucumber";
-import promiseFinally from 'promise.prototype.finally';
-const _cucumber = cucumber.clone();
-
-export default async function Features(obj) {
-  ${code}
-}
-    `;
   }
 
   transform(source: string) {

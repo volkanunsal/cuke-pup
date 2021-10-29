@@ -80,7 +80,7 @@ module.exports = class Transformer {
   }
   transformFile(code) {
     return `
-import { cucumber } from "stucumber";
+import { cucumber } from "stucumber/dist/cucumber";
 import promiseFinally from 'promise.prototype.finally';
 const _cucumber = cucumber.clone();
 

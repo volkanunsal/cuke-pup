@@ -5,6 +5,7 @@ const isProduction = process.env.NODE_ENV == 'production';
 
 const config = {
   target: 'node',
+  devtool: 'source-map',
   mode: isProduction ? 'production' : 'development',
   entry: {
     canary1: path.resolve(__dirname, '../canaries/canary1.ts'),
@@ -19,7 +20,7 @@ const config = {
   },
   plugins: [
     new webpack.NormalModuleReplacementPlugin(
-      /cucumber/,
+      /^cucumber$/,
       path.resolve(__dirname, './runtime.ts'),
     ),
   ],
@@ -32,7 +33,10 @@ const config = {
       },
       {
         test: /\.feature$/i,
-        loader: path.resolve(__dirname, './loaders/GherkinLoader'),
+        use: [
+          { loader: 'ts-loader' },
+          { loader: path.resolve(__dirname, './loaders/GherkinLoader') },
+        ],
         exclude: ['/node_modules/'],
       },
     ],
